@@ -1,6 +1,6 @@
 # SII与集中指数分析
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("dplyr", "tidyr", "readr", "ggplot2", "patchwork", "scales"))
 
 burden <- readRDS(BURDEN_SUMMARY_RDS)
@@ -104,4 +104,3 @@ sii_plot <- ggplot2::ggplot(
 
 figure3 <- curve_plot / sii_plot + patchwork::plot_layout(heights = c(1.35, 1))
 save_publication_plot(figure3, "Figure_3_inequality", width = 10, height = 10)
-message("SII、集中指数及敏感性分析完成。")
