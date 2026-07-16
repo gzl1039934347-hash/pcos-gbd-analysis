@@ -1,6 +1,6 @@
 # 1990-2023年PCOS负担人数变化的三因素Shapley分解
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("dplyr", "tidyr", "readr", "ggplot2"))
 
 DECOMPOSITION_REPS <- 1000L
@@ -22,7 +22,7 @@ age_numbers <- pcos |>
       dplyr::filter(year %in% c(YEAR_START, YEAR_END)),
     by = c("location_id", "location_name", "year", "age_name")
   )
-assert_true(!anyNA(age_numbers), "分解分析输入存在缺失值。")
+assert_true(!anyNA(age_numbers))
 
 combined <- age_numbers |>
   dplyr::filter(location_id != 6L) |>
@@ -210,4 +210,3 @@ figure5 <- ggplot2::ggplot(
     legend.position = "bottom"
   )
 save_publication_plot(figure5, "Figure_5_decomposition", width = 13, height = 13)
-message("Shapley负担变化分解及Figure 5已完成。")
