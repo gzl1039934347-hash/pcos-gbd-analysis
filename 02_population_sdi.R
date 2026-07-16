@@ -1,13 +1,11 @@
 # 整理历史人口、SDI、WPP预测人口和2023年年龄权重
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("data.table", "dplyr", "tidyr", "readr", "readxl"))
 
 population_files <- list.files(
   file.path(DATA_DIR, "GBD_population_2023"), pattern = "\\.csv$", full.names = TRUE
 )
-assert_true(length(population_files) > 0, "未找到GBD 2023人口文件。")
-
 population_all <- data.table::rbindlist(
   lapply(population_files, data.table::fread, showProgress = FALSE),
   use.names = TRUE, fill = TRUE
@@ -76,7 +74,7 @@ saveRDS(sdi, SDI_RDS)
 readr::write_csv(sdi, file.path(DERIVED_DIR, "sdi_1990_2023.csv"))
 
 wpp_path <- file.path(DATA_DIR, "WPP2024_POP_F02_3_POPULATION_5-YEAR_AGE_GROUPS_FEMALE.xlsx")
-assert_true(file.exists(wpp_path), "未找到WPP 2024女性5岁年龄组人口文件。")
+assert_true(file.exists(wpp_path)
 wpp <- readxl::read_excel(
   wpp_path, sheet = "Medium variant", skip = 16, col_types = "text"
 )
@@ -99,9 +97,9 @@ wpp_long <- wpp |>
   dplyr::select(location_id, location_name, iso3, year, age_name, population) |>
   dplyr::arrange(location_id, year, match(age_name, AGE_GROUPS))
 assert_true(nrow(wpp_long) == 1785L, "WPP预测人口应为1,785行。")
-assert_true(!anyNA(wpp_long$population), "WPP预测人口存在无法解析的值。")
+assert_true(!anyNA(wpp_long$population))
 assert_true(!anyDuplicated(dplyr::select(wpp_long, location_id, year, age_name)),
-            "WPP预测人口存在重复键。")
+           )
 saveRDS(wpp_long, WPP_RDS)
 readr::write_csv(wpp_long, file.path(DERIVED_DIR, "wpp_female_2024_2040.csv"))
 
@@ -111,4 +109,3 @@ qc <- data.frame(
   expected = c(3570, 510, 1785, 100)
 )
 save_table(qc, "QC_02_population_sdi_wpp.csv")
-message("人口、SDI、WPP及年龄权重整理完成。")
