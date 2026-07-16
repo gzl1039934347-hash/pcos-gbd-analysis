@@ -111,4 +111,4 @@ qc <- data.frame(
   expected = c(NA, 28560, 21420, NA, 0, 0)
 )
 save_table(qc, "QC_01_pcos_cleaning.csv")
-message("PCOS清洗完成，去除重复行: ", duplicate_rows)
+
