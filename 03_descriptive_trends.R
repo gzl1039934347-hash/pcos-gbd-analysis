@@ -1,6 +1,6 @@
 # PCOS负担、年龄模式和EAPC趋势分析
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("dplyr", "tidyr", "readr", "ggplot2", "maps", "patchwork", "scales"))
 
 pcos <- readRDS(PCOS_CLEAN_RDS)
