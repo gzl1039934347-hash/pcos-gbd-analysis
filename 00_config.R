@@ -1,6 +1,6 @@
 # PCOS GBD 2023项目统一配置
 
-PROJECT_ROOT <- "E:/GBD_project"
+PROJECT_ROOT <- "E/"
 DATA_DIR <- file.path(PROJECT_ROOT, "data_clean")
 SCRIPT_DIR <- file.path(PROJECT_ROOT, "scripts")
 OUTPUT_ROOT <- Sys.getenv("PCOS_OUTPUT_ROOT", unset = PROJECT_ROOT)
