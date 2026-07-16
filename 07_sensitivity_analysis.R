@@ -1,6 +1,6 @@
 # 年龄标化与ETS训练窗口敏感性分析
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c(
   "data.table", "dplyr", "tidyr", "readr", "ggplot2", "forecast", "patchwork"
 ))
@@ -275,4 +275,3 @@ save_publication_plot(
   age_plot, "Figure_S1_age_standardization_sensitivity", width = 10, height = 4.8
 )
 
-message("年龄标化和ETS训练窗口敏感性分析完成。")
