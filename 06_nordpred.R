@@ -1,6 +1,6 @@
 # Nordpred预测PCOS发病人数和年龄标化发病率
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c(
   "nordpred", "dplyr", "tidyr", "readr", "ggplot2", "forecast", "patchwork"
 ))
@@ -736,4 +736,3 @@ projection_plot <- future_forecast |>
 figure6 <- performance_plot / projection_plot +
   patchwork::plot_layout(heights = c(0.8, 1.7))
 save_publication_plot(figure6, "Figure_6_forecast_comparison", width = 13, height = 13)
-message("Power5、Poisson和ETS未来预测、滚动验证及Figure 6已完成。")
