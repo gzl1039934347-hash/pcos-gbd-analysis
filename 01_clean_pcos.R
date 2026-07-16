@@ -1,6 +1,6 @@
 # 合并并清洗PCOS GBD 2023数据
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("data.table", "dplyr", "readr"))
 
 all_csv <- list.files(DATA_DIR, pattern = "\\.csv$", full.names = TRUE)
@@ -15,7 +15,7 @@ is_pcos_file <- function(path) {
 }
 
 pcos_files <- all_csv[vapply(all_csv, is_pcos_file, logical(1))]
-assert_true(length(pcos_files) > 0, "未找到PCOS CSV文件。")
+assert_true(length(pcos_files) > 0)
 message("读取PCOS文件数: ", length(pcos_files))
 
 raw <- data.table::rbindlist(
