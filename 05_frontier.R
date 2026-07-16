@@ -1,6 +1,6 @@
 # SDI区域内部低负担基准曲线与发展调整超额YLD差距
 
-source("E:/GBD_project/scripts/00_config.R", encoding = "UTF-8")
+source("E:/", encoding = "UTF-8")
 required_packages(c("dplyr", "tidyr", "readr", "ggplot2", "quantreg", "ggrepel"))
 
 burden <- readRDS(BURDEN_SUMMARY_RDS)
@@ -119,4 +119,3 @@ table2_combined <- frontier_2023 |>
     by = "measure"
   )
 save_table(table2_combined, "Table_2_inequality_frontier_2023.csv")
-message("区域效率前沿、bootstrap及leave-one-country-out分析完成。")
