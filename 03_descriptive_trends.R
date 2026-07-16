@@ -165,4 +165,4 @@ age_plot <- ggplot2::ggplot(
 
 figure2 <- map_plot + age_plot + patchwork::plot_layout(widths = c(1.2, 1))
 save_publication_plot(figure2, "Figure_2_map_age_pattern", width = 12, height = 5.8)
-message("描述性负担、EAPC和Figure 1-2已完成。")
+
